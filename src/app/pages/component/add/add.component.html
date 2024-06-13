@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="text-center">
+      <h3>Get in touch</h3>
+      <p class="lead">add a product</p>
+    </div>
+    <div class="row justify-content-center my-1">
+      <div class="col-lg-6">
+        <form action="" [formGroup]="formgroup" (ngSubmit)="onSend()">
+          
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="my@email.com"
+            class="form-control"
+            formControlName="email"
+            [class.is-valid]="formgroup.get('email')?.valid && formgroup.get('email')?.touched"
+            [class.is-invalid]="formgroup.get('email')?.invalid && formgroup.get('email')?.touched"  
+          />
+          <div class="form-floating my-1">
+            <input
+              type="name"
+              name="name"
+              id="name"
+              style="height: 50px;"
+              placeholder="e.g. Dawid"
+              class="form-control"
+              formControlName="name"
+              [class.is-valid]="formgroup.get('name')?.valid && formgroup.get('name')?.touched"
+              [class.is-invalid]="formgroup.get('name')?.invalid && formgroup.get('name')?.touched"  
+            />
+            <label for="name" class="form-label"> Product Name:</label>
+          </div >
+          <div class="form-floating my-1">
+            <input
+              type="number"
+              name="Price"
+              id="Price"
+              placeholder="e.g. Dawid"
+              class="form-control"
+              formControlName="Price"
+              [class.is-valid]="formgroup.get('Price')?.valid && formgroup.get('Price')?.touched"
+              [class.is-invalid]="formgroup.get('Price')?.invalid && formgroup.get('Price')?.touched"  
+            />
+            <label for="name" class="form-label">  Price:</label>
+          </div >
+
+          <div class="form-floating my-1">
+            <textarea
+              name="query"
+              id="query"
+              style="height: 80px; resize: none;"
+
+              class="form-control"
+              placeholder="Write a message"
+            ></textarea>
+        
+            <label for="query">Description message</label>
+          </div>
+          <div>
+            <label for="subject" class="form=label">Subject</label>
+            <select name="subject" id="subject" class="form-select my-2" formControlName="subject">
+              <option value="Unpublished" >Unpublished</option>
+              <option value="Published">Published</option>
+            </select>
+          </div>
+          
+
+          <div class="text-center my-4">
+            <button type="submit" class="btn btn-primary"[disabled]="formgroup.invalid">Send!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

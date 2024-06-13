@@ -1,0 +1,52 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="Search"  [(ngModel)]="name">
+          <button class="btn btn-outline-success" (click)="OnSearch()" type="button">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-5">
+    <table class="table mx-auto w-55 table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product Name</th>
+          <th  style="text-align: center;" scope="col">Price</th>
+          <th style="text-align: center;" scope="col">Subject</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of produits; let i = index"   (click)="navigateToDetails(product.id)">
+          <td>{{ i + 1 }}</td> 
+          <td>{{ product.name }}</td>
+          <td style="text-align: center;">{{ product.price }}</td>
+         
+          <td style="text-align: center;">
+            <span [ngStyle]="{
+              'background-color': product.subject === 'Published' ? 'green' : 'red',
+              'color': product.subject === 'Published' ? 'white' : 'white',
+              'padding': '5px',
+              'border': product.subject === 'Published' ? '1px solid black' : '1px solid black',
+              'border-radius': '5px'
+            }">
+              {{ product.subject }}
+            </span>
+          </td>
+          
+        
+          
+        </tr>
+     <!--    <tr (click)="navigateToDetails(1)">     <td>1</td> 
+            <td>elyes</td>
+            <td>20</td>
+            <td>published</td>
+          </tr> -->
+      </tbody>
+     
+    </table>
+    <button class="btn btn-danger float-end" (click)="deleteAll()" type="button">Delete All</button>
+  </div>
